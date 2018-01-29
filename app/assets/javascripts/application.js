@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require home
+//= require jquery.slick
 //= require_tree .

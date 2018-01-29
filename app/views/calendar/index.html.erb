@@ -1,32 +1,118 @@
 <%= link_to 'Home', root_path, clas: 'btn btn-primary' %>
 <main>
   <div id='carousel'>
-
     <div class='selected'>
       <%= render 'card', date: @date %>
     </div>
 
     <div class='next'>
-      <%= render 'card', date: @date + 1.day %>
+      <%= render 'card', date: @date + 1 %>
     </div>
 
     <div class="nextRightSecond">
-      <%= render 'card', date: @date + 2.day %>
+      <%= render 'card', date: @date + 2 %>
     </div>
 
     <div class="hideRight">
-      <%= render 'card', date: @date + 3.day %>
+      <%= render 'card', date: @date + 3 %>
     </div>
   </div>
 
   <div class="button-left">
     <div id='prev'>
-      <%= link_to '<', prev_calendar_path(date: @date - 1.day), remote: true %>
+      <
+      <!-- <%= link_to '<', prev_calendar_path, remote: true %> -->
     </div>
   </div>
   <div class='button-right'>
     <div id='next'>
-      <%= link_to '>', next_calendar_path(date: @date + 1.day), remote: true %>
+      >
+      <!-- <%= link_to '>', next_calendar_path, remote: true %> -->
     </div>
   </div>
 </main>
+
+<script>
+  function getPrev(day) {
+    if (day.prev().length > 0) {
+      return $(day).prev();
+    } else {
+      $.ajax({
+        url: 'prev_calendar',
+        data: {
+          date: '01/01/2017'
+        },
+        type: 'GET',
+        success: function(e) {
+          console.log(e)
+          // $('#carousel').prepend(e.date);
+        }
+      })
+      return $(day)
+    }
+  }
+
+  function getNext(day) {
+    if (day.next().length > 0) {
+      return $(day).next();
+    } else {
+      $.ajax({
+        url: 'next_calendar',
+        data: {
+          date: '21/01/2017'
+        },
+        type: 'GET',
+        success: function(e) {
+          console.log(e)
+          // $('#carousel').prepend(e.date);
+        }
+      })
+      console.log(day);
+      return $(day)
+    }
+  }
+
+  function moveToSelected(element) {
+    if (element == "next") {
+      var selected = $(".selected").next();
+    } else if (element == "prev") {
+      var selected = $(".selected").prev();
+    } else {
+      var selected = element;
+    }
+
+    var next = $(selected).next();
+    var prev = $(selected).prev();
+    var prevSecond = $(prev).prev();
+    var nextSecond = $(next).next();
+    // var prev = getPrev(selected);
+    // var prevSecond = getPrev(prev);
+    // var next = getNext(selected);
+    // var nextSecond = getNext(next);
+
+    $(selected).removeClass().addClass("selected");
+
+    $(next).removeClass().addClass("next");
+    $(prev).removeClass().addClass('hideLeft');
+
+    $(nextSecond).removeClass().addClass("nextRightSecond");
+    $(prevSecond).removeClass().addClass('hideLeft');
+
+    $(nextSecond).nextAll().removeClass().addClass('hideRight');
+    $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+  }
+
+  $(document).on('turbolinks:load', function() {
+    $('#carousel div').click(function() {
+      moveToSelected($(this));
+    });
+
+    $('#prev').click(function() {
+      moveToSelected('prev');
+    });
+
+    $('#next').click(function() {
+      moveToSelected('next');
+    });
+  })
+</script>

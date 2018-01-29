@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'calendar', to: 'calendar#index'
   get 'prev_calendar', to: 'calendar#prev'
   get 'next_calendar', to: 'calendar#next'
+  get 'slick', to: 'home#slick'
   root to: 'home#index'
 end

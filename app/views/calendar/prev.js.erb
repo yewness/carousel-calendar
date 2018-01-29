@@ -1,1 +1,1 @@
-$("#carousel").prepend("<%= j render(partial: 'prev') %>");
+$("#carousel").prepend("<%= j render(partial: 'prev', locals: { date: @date }) %>");

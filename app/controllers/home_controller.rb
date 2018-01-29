@@ -17,6 +17,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def slick
+
+  end
+
   private
   def get_date
     @date = params[:date] ? Time.zone.parse(params[:date]) : Date.current

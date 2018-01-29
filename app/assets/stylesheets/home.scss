@@ -16,7 +16,7 @@ html, body, main {
   position: relative;
   height: 400px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(-20%);
   overflow: hidden;
 }
 #carousel div {
