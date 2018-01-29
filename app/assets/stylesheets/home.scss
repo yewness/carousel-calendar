@@ -5,6 +5,13 @@ html, body, main {
   padding: 0;
 }
 
+// #main-page {
+//   width: 100%;
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+// }
+
 #carousel {
   position: relative;
   height: 400px;
@@ -17,8 +24,9 @@ html, body, main {
   transition: transform 1s, left 1s, opacity 1s, z-index 0s;
   opacity: 1;
 }
-#carousel div img {
+#carousel div .card {
   width: 400px;
+  height: 400px;
   transition: width 1s;
 }
 #carousel div.hideLeft {
@@ -26,24 +34,27 @@ html, body, main {
   opacity: 0;
   transform: translateY(50%) translateX(-50%);
 }
-#carousel div.hideLeft img {
-  width: 200px;
+#carousel div.hideLeft .card {
+  width: 400px;
+  height: 400px;
 }
 #carousel div.hideRight {
   left: 100%;
   opacity: 0;
   transform: translateY(50%) translateX(-50%);
 }
-#carousel div.hideRight img {
-  width: 200px;
+#carousel div.hideRight .card {
+  width: 150px;
+  height: 220px;
 }
 #carousel div.prev {
   z-index: 5;
   left: 30%;
   transform: translateY(50px) translateX(-50%);
 }
-#carousel div.prev img {
+#carousel div.prev .card {
   width: 300px;
+  height: 300px;
 }
 #carousel div.prevLeftSecond {
   z-index: 4;
@@ -51,13 +62,13 @@ html, body, main {
   transform: translateY(50%) translateX(-50%);
   opacity: 0.7;
 }
-#carousel div.prevLeftSecond img {
+#carousel div.prevLeftSecond .card {
   width: 200px;
+  height: 150px;
 }
 #carousel div.selected {
   z-index: 10;
   left: 50%;
-  height: 100px;
   transform: translateY(0px) translateX(-50%);
 }
 #carousel div.next {
@@ -65,25 +76,29 @@ html, body, main {
   left: 70%;
   transform: translateY(50px) translateX(-50%);
 }
-#carousel div.next img {
-  width: 300px;
+#carousel div.next .card {
+  width: 200px;
+  height: 300px;
 }
 #carousel div.nextRightSecond {
   z-index: 4;
-  left: 85%;
+  left: 80%;
   transform: translateY(50%) translateX(-50%);
   opacity: 0.7;
 }
-#carousel div.nextRightSecond img {
-  width: 200px;
+#carousel div.nextRightSecond .card {
+  width: 150px;
+  height: 220px;
 }
 
 .button-left {
   position: fixed;
   left: 10%;
+  cursor: pointer;
 }
 
 .button-right {
   position: fixed;
   right: 10%;
+  cursor: pointer;
 }

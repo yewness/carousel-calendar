@@ -1,0 +1,32 @@
+<%= link_to 'Home', root_path, clas: 'btn btn-primary' %>
+<main>
+  <div id='carousel'>
+
+    <div class='selected'>
+      <%= render 'card', date: @date %>
+    </div>
+
+    <div class='next'>
+      <%= render 'card', date: @date + 1.day %>
+    </div>
+
+    <div class="nextRightSecond">
+      <%= render 'card', date: @date + 2.day %>
+    </div>
+
+    <div class="hideRight">
+      <%= render 'card', date: @date + 3.day %>
+    </div>
+  </div>
+
+  <div class="button-left">
+    <div id='prev'>
+      <%= link_to '<', prev_calendar_path(date: @date - 1.day), remote: true %>
+    </div>
+  </div>
+  <div class='button-right'>
+    <div id='next'>
+      <%= link_to '>', next_calendar_path(date: @date + 1.day), remote: true %>
+    </div>
+  </div>
+</main>

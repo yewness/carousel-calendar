@@ -1,4 +1,5 @@
 function moveToSelected(element) {
+  console.log(element);
 
   if (element == "next") {
     var selected = $(".selected").next();
@@ -13,6 +14,7 @@ function moveToSelected(element) {
   var prevSecond = $(prev).prev();
   var nextSecond = $(next).next();
 
+  // if next doesn't have, create a new date
   $(selected).removeClass().addClass("selected");
 
   $(next).removeClass().addClass("next");

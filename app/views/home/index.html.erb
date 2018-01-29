@@ -1,43 +1,34 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
+<%= link_to 'Calendar', calendar_path, clas: 'btn btn-primary' %>
 <main>
-  <div id="carousel">
-    <div class="hideLeft">
-      <img src="https://s16.postimg.org/vklrwoxtx/cover9.jpg">
+  <div id='main-page'>
+    <div id="carousel">
+      <div class="hideLeft">
+        <img src="https://s16.postimg.org/vklrwoxtx/cover9.jpg">
+      </div>
+
+      <div class="selected" data="<%= Date.current %>">
+        <img src="https://s16.postimg.org/9drqcz611/cover1.jpg">
+      </div>
+
+      <div class="next" data="<%= Date.current + 1.day %>">
+        <img src="https://s16.postimg.org/pnhwfvgp1/cover6.jpg">
+      </div>
+
+      <div class="nextRightSecond" data="<%= Date.current + 2.day %>">
+        <img src="https://s16.postimg.org/edp6kxbnp/cover4.jpg">
+      </div>
     </div>
-
-    <!-- <div class="prevLeftSecond">
-      <img src="https://s16.postimg.org/cgsggckzp/cover8.jpg">
-    </div>
-
-    <div class="prev">
-      <img src="https://s16.postimg.org/emmrauog5/cover7.jpg">
-    </div> -->
-
-    <div class="selected">
-      <img src="https://s16.postimg.org/9drqcz611/cover1.jpg">
-    </div>
-
-    <div class="next">
-      <img src="https://s16.postimg.org/pnhwfvgp1/cover6.jpg">
-    </div>
-
-    <div class="nextRightSecond">
-      <img src="https://s16.postimg.org/edp6kxbnp/cover4.jpg">
-    </div>
-
-    <div class="hideRight">
-      <img src="https://s16.postimg.org/fij8qay4l/cover3.jpg">
-    </div>
-
   </div>
 
   <div class="button-left">
-    <button id="prev"><</button>
+    <div id='prev'>
+      <%= link_to '<', prev_path, remote: true %>
+    </div>
   </div>
   <div class='button-right'>
-    <button id="next">></button>
+    <div id='next'>
+      <%= link_to '>', next_path, remote: true %>
+    </div>
   </div>
-
+  <div id='ajax'></div>
 </main>

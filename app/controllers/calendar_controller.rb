@@ -1,5 +1,6 @@
-class HomeController < ApplicationController
-  before_action :get_date, only: [:prev, :next]
+class CalendarController < ApplicationController
+  before_action :get_date
+  
   def index
   end
 
@@ -19,6 +20,6 @@ class HomeController < ApplicationController
 
   private
   def get_date
-    @date = params[:date] ? Time.zone.parse(params[:date]) : Date.current
+    @date = params[:date] ? Time.zone.parse(params[:date]) : Date.current.to_date
   end
 end
