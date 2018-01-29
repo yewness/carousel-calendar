@@ -1,6 +1,18 @@
 <%= link_to 'Home', root_path, clas: 'btn btn-primary' %>
 <main>
   <div id='carousel'>
+    <div class="hideLeft">
+      <%= render 'card', date: @date - 4 %>
+    </div>
+    <div class="hideLeft">
+      <%= render 'card', date: @date - 3 %>
+    </div>
+    <div class="hideLeft">
+      <%= render 'card', date: @date - 2 %>
+    </div>
+    <div class="hideLeft">
+      <%= render 'card', date: @date - 1 %>
+    </div>
     <div class='selected'>
       <%= render 'card', date: @date %>
     </div>
@@ -33,45 +45,6 @@
 </main>
 
 <script>
-  function getPrev(day) {
-    if (day.prev().length > 0) {
-      return $(day).prev();
-    } else {
-      $.ajax({
-        url: 'prev_calendar',
-        data: {
-          date: '01/01/2017'
-        },
-        type: 'GET',
-        success: function(e) {
-          console.log(e)
-          // $('#carousel').prepend(e.date);
-        }
-      })
-      return $(day)
-    }
-  }
-
-  function getNext(day) {
-    if (day.next().length > 0) {
-      return $(day).next();
-    } else {
-      $.ajax({
-        url: 'next_calendar',
-        data: {
-          date: '21/01/2017'
-        },
-        type: 'GET',
-        success: function(e) {
-          console.log(e)
-          // $('#carousel').prepend(e.date);
-        }
-      })
-      console.log(day);
-      return $(day)
-    }
-  }
-
   function moveToSelected(element) {
     if (element == "next") {
       var selected = $(".selected").next();
@@ -85,10 +58,6 @@
     var prev = $(selected).prev();
     var prevSecond = $(prev).prev();
     var nextSecond = $(next).next();
-    // var prev = getPrev(selected);
-    // var prevSecond = getPrev(prev);
-    // var next = getNext(selected);
-    // var nextSecond = getNext(next);
 
     $(selected).removeClass().addClass("selected");
 
@@ -103,10 +72,6 @@
   }
 
   $(document).on('turbolinks:load', function() {
-    $('#carousel div').click(function() {
-      moveToSelected($(this));
-    });
-
     $('#prev').click(function() {
       moveToSelected('prev');
     });
